@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameControler : MonoBehaviour {
 
     public GameObject menuOpcoes;
-    public bool status { get; private set; }
+    public GameObject menuSeletor;
+    public bool statusMenu { get; private set; }
 
 	// Use this for initialization
 	void Start () {
-        status = false;
+        statusMenu = false;
+        menuSeletor.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -19,7 +21,17 @@ public class GameControler : MonoBehaviour {
 
     public void ativaMenu()
     {
-        status = !status;
-        menuOpcoes.SetActive(status);
+        statusMenu = !statusMenu;
+        menuOpcoes.SetActive(statusMenu);
+    }
+
+    public void ativaSeletorCores()
+    {
+        menuSeletor.SetActive(true);
+    }
+
+    public void fechaSeletorCores()
+    {
+        menuSeletor.SetActive(false);
     }
 }
