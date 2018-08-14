@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameControler : MonoBehaviour {
 
+    public GameObject mainPanel;
     public GameObject menuOpcoes;
     public GameObject menuSeletor;
     public bool statusMenu { get; private set; }
@@ -12,6 +13,7 @@ public class GameControler : MonoBehaviour {
 	void Start () {
         statusMenu = false;
         menuSeletor.SetActive(false);
+        mainPanel.SetActive(true);
 	}
 
 	// Update is called once per frame
@@ -28,10 +30,13 @@ public class GameControler : MonoBehaviour {
     public void ativaSeletorCores()
     {
         menuSeletor.SetActive(true);
+        mainPanel.SetActive(false);
+        menuOpcoes.SetActive(false);
     }
 
     public void fechaSeletorCores()
     {
         menuSeletor.SetActive(false);
+        mainPanel.SetActive(true);
     }
 }
