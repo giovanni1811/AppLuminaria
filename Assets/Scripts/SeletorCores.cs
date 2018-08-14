@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class SeletorCores : MonoBehaviour {
 
-    public Color cor;
+    public bool emCima;
+    public SeletorSlider selet;
 
 	// Use this for initialization
 	void Start () {
-        cor = new Color(0, 0, 1, 1);
+        emCima = false;
 	}
 	
 	// Update is called once per frame
-	void Update() { 
+	void Update() {
         
-	}
+    }
 
-    public void ativaSeletor()
+    public void OnMouseOver()
     {
-        ;
+        emCima = true;
+    }
+    public void OnMouseExit()
+    {
+        emCima = false;
     }
 }
