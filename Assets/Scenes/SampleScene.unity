@@ -690,6 +690,7 @@ MonoBehaviour:
   mainPanel: {fileID: 0}
   menuOpcoes: {fileID: 44315920}
   menuSeletor: {fileID: 1916475029}
+  sc: {fileID: 0}
 --- !u!4 &1098245480
 Transform:
   m_ObjectHideFlags: 0

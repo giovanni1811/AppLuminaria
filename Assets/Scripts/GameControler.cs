@@ -20,20 +20,7 @@ public class GameControler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-        if (sc.emCima && Input.GetMouseButtonDown(0))
-        {
-            sc.selet.podeMover = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            sc.selet.podeMover = false;
-        }
-
-        if (sc.selet.podeMover)
-        {
-            sc.selet.movimento();
-        }
+        
 	}
 
     public void ativaMenu()
@@ -46,7 +33,6 @@ public class GameControler : MonoBehaviour {
     {
         menuSeletor.SetActive(true);
         mainPanel.SetActive(false);
-        menuOpcoes.SetActive(false);
     }
 
     public void fechaSeletorCores()

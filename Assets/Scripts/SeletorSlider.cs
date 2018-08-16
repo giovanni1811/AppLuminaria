@@ -14,10 +14,6 @@ public class SeletorSlider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
 	}
-
-    public void movimento()
-    {
-        transform.position = Input.mousePosition;
-    }
 }
