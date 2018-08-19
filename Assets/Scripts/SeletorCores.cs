@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class SeletorCores : MonoBehaviour {
 
-    public bool emCima;
-    public SeletorSlider selet;
+    public CircleSlider circleSlider;
 
 	// Use this for initialization
 	void Start () {
-        emCima = false;
+        
 	}
 	
 	// Update is called once per frame
 	void Update() {
         
-    }
-
-    public void OnMouseOver()
-    {
-        emCima = true;
-    }
-    public void OnMouseExit()
-    {
-        emCima = false;
     }
 }
