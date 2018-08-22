@@ -1136,11 +1136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f2d0ceea65e744bb0c313319c07e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  podeMover: 0
   linha: {fileID: 369038321}
   mexe: 0
   ultPosMouse: {x: 0, y: 0, z: 0}
   circleSlider: {fileID: 1315683590}
+  ultRotZ: 0
+  k: 180
 --- !u!70 &1537823483
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

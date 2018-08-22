@@ -20,7 +20,7 @@ public class GameControler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(sc.circleSlider.emCima);
+        
 	}
 
     public void ativaMenu()

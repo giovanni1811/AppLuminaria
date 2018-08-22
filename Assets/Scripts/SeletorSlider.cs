@@ -4,56 +4,69 @@ using UnityEngine;
 
 public class SeletorSlider : MonoBehaviour {
 
-    public bool podeMover;
+    //public bool podeMover;
     public GameObject linha;
     public bool mexe;
     public Vector3 ultPosMouse;
     public CircleSlider circleSlider;
+    public float ultRotZ;
+    public float k;
 
 	// Use this for initialization
 	void Start () {
-        podeMover = false;
         mexe = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        linha.transform.Rotate(new Vector3(0, 0, 0));
-
         if (Input.GetMouseButtonDown(0) && circleSlider.emCima)
         {
             mexe = true;
+            cancelFreezePos();
         }
-        else if (Input.GetMouseButtonUp(0) && mexe)
+        else if (Input.GetMouseButtonUp(0))
         {
             mexe = false;
         }
 
         if (mexe)
         {
-            float direcao = ladoMexe();
-            linha.transform.Rotate(new Vector3(0, 0, direcao*2));
+            Debug.Log("PosMouse -> x: " + Input.mousePosition.x + " | y: " + Input.mousePosition.y);
+            float rodaZ = toRotationZ();
+            linha.transform.eulerAngles = new Vector3(0, 0, rodaZ);
+            ultRotZ = rodaZ;
         }
         else
         {
-            linha.transform.Rotate(new Vector3(0, 0, 0));
+            ativaFreezePos();
         }
+        
 
         ultPosMouse = Input.mousePosition;
     }
 
-    public float ladoMexe()
+    public void ativaFreezePos()
     {
-        Vector3 posMouse = Input.mousePosition;
-        if (posMouse.x > ultPosMouse.x)
-        {
-            return -1f;
-        }
-        else if (posMouse.x < ultPosMouse.x)
-        {
-            return 1;
-        }
-        return 0;
+        Rigidbody2D rbLinha = linha.GetComponent<Rigidbody2D>();
+
+        rbLinha.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void cancelFreezePos()
+    {
+        Rigidbody2D rbLinha = linha.GetComponent<Rigidbody2D>();
+
+        rbLinha.constraints = RigidbodyConstraints2D.None;
+    }
+
+    public float toRotationZ()
+    {
+        Vector2 posMouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+        float angle = Mathf.Atan2(posMouse.y, posMouse.x) * k * Mathf.Rad2Deg;
+
+        return angle;
+
     }
 }
