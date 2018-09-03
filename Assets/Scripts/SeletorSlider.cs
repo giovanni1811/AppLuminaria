@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +11,14 @@ public class SeletorSlider : MonoBehaviour {
     public CircleSlider circleSlider;
     public float ultRotZ;
     public float k;
+    public GameObject centroCircunferencia;
+    public float raio { get; private set; }
+    public GameObject target;
 
 	// Use this for initialization
 	void Start () {
         mexe = false;
+        raio = 242;
 	}
 	
 	// Update is called once per frame
@@ -32,10 +36,7 @@ public class SeletorSlider : MonoBehaviour {
 
         if (mexe)
         {
-            Debug.Log("PosMouse -> x: " + Input.mousePosition.x + " | y: " + Input.mousePosition.y);
-            float rodaZ = toRotationZ();
-            linha.transform.eulerAngles = new Vector3(0, 0, rodaZ);
-            ultRotZ = rodaZ;
+            movimento();
         }
         else
         {
@@ -60,13 +61,14 @@ public class SeletorSlider : MonoBehaviour {
         rbLinha.constraints = RigidbodyConstraints2D.None;
     }
 
-    public float toRotationZ()
+    public void movimento()
     {
-        Vector2 posMouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector3 posMouse = Input.mousePosition;
+        Vector2 centroCircunf = new Vector2(centroCircunferencia.transform.position.x, centroCircunferencia.transform.position.y);
 
-        float angle = Mathf.Atan2(posMouse.y, posMouse.x) * k * Mathf.Rad2Deg;
-
-        return angle;
+        var dir = posMouse - Camera.main.WorldToScreenPoint(centroCircunferencia.transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        linha.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
     }
 }

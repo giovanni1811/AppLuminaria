@@ -20,7 +20,7 @@ public class GameControler : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        
+        //Debug.Log("MouseX: " + Input.mousePosition.x + "MouseY: " + Input.mousePosition.y);   
 	}
 
     public void ativaMenu()
